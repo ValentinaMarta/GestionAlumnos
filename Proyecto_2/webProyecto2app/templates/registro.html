@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate</title>
+        <!-- carga css  -->
+   <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all" type="text/css">
+    <!--<link rel="stylesheet" href="style.css">-->
+</head>
+<body>
+
+
+    <div class="flex-container">
+        <article class="ImagenRegistro">
+             <img src="{% static 'img/ImagenRegistro.png' %}">
+        </article>
+       
+       <form>
+           <div class="LogoRegistro" >
+               <img src="{% static 'img/logo.png' %}">
+               <h3>Registrate</h3>
+            </div>
+           
+                <div class="FormularioRegistro">
+                    <input type="text" class="input" placeholder="Nombre"><br>
+                    <input type="email" class="input" placeholder="Apellido"><br>
+                    <input type="text" class="input" placeholder="DNI" ><br>
+                    <input type="text" class="input" placeholder="Contraseña"><br>
+                    <input type="text" class="input" placeholder="Vuelve a escribir la contraseña"><br>
+                    <input type="submit" class="but"  value="Registrar"/>
+
+                </div>
+           <!--Preguntar si los enlaces se ponen asi-->
+            <a href="./index.html">Volver</a>
+       </form>
+       </div>
+    
+    
+    
+    </body>
+    
+</html>
