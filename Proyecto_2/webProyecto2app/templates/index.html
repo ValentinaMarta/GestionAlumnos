@@ -41,6 +41,20 @@
             </article>
 
     </section>
+
+    <div>
+            {% for x in alumno %}
+            <li>
+                Alumno {{x.id}}:
+                {{x.name}}
+                {{x.tel}}
+                {{x.email}}
+                {{x.turno}}
+               
+            </li>
+            {% endfor %}
+    </div>
+
     
     
 </body>
