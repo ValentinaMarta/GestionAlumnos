@@ -35,27 +35,10 @@
             </article>
             </article>
         </div>
-
             <article class="ImagenAvatar">
-                <img src="{% static 'img/imagenIndex.jpg' %}">
+                <img src="{% static 'img/imagenIndex.png' %}">
             </article>
 
     </section>
-
-    <div>
-            {% for x in alumno %}
-            <li>
-                Alumno {{x.id}}:
-                {{x.name}}
-                {{x.tel}}
-                {{x.email}}
-                {{x.turno}}
-               
-            </li>
-            {% endfor %}
-    </div>
-
-    
-    
 </body>
 </html>
