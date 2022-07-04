@@ -12,32 +12,40 @@
 </head>
 
 <body>
-<h>Calificaciones</h>
-    <div>
-        <!--empieza el for-->
-            {% for x in alumno %}
-            <li>
-                Alumno {{x.id}}:
-                {{x.nombre}}
-                {{x.apellido}}
-                {{x.dni}}
-                {{x.email}}
+    <section>
+            <article class="logoCal">
+                <!--carga imagen -->
+                <img src="{% static 'img/logo.png' %}">
+            <article/>
 
-            </li>
-            {% endfor %}
-        <!--acaba el for-->
+            <div class="contenedorC">
+                <h1>Calificaciones</h1>
 
-        <!--empieza el for-->
-             {% for n in par_notas %}
-            <li>
-                Calificaciones {{n.id}}:
-                {{n.nota1}}
-                {{n.nota2}}
-                {{n.notafinal}}
-                {{n.Alumno.nombre}}
-            </li>
-            {% endfor %}
-        <!--acaba el for-->
-    </div>
+                <!--empieza el for-->
+                    {% for x in alumno %}
+                    <li>
+                        Alumno {{x.id}}:
+                        {{x.nombre}}
+                        {{x.apellido}}
+                        {{x.dni}}
+                        {{x.email}}
+                    </li>
+
+                    {% endfor %}
+                <!--acaba el for-->
+
+                <!--empieza el for-->
+                     {% for n in par_notas %}
+                    <li>
+                        Calificaciones {{n.id}}:
+                        {{n.nota1}}
+                        {{n.nota2}}
+                        {{n.notafinal}}
+                        {{n.Alumno.nombre}}
+                    </li>
+                    {% endfor %}
+                <!--acaba el for-->
+            </div>
+    </section>
 </body>
 </html>

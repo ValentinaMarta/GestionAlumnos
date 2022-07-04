@@ -20,6 +20,7 @@ from webProyecto2app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login),
     path('', extraeralumno),
+    path('', login),
+
 ]

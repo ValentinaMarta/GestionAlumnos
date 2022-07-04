@@ -16,14 +16,21 @@ section {
     background-color: #FFF4E1;
 
 }
-
 .Logo{
     grid-area: 'Logo';
     display: grid;
     justify-content: center;
 
 }
-
+/* calificaciones*/
+.logoCal{
+ justify-content: left;
+}
+.contenedorC{
+margin-left: 100px;
+background-color: #FFF4E1;
+}
+/*fin calificaciones*/
 .Logo img {
     height: 200px;
     width: 200px;
