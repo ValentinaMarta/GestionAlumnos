@@ -1,5 +1,7 @@
 /*Seccion Login*/
-
+body{
+     font-family: Arial, Helvetica, sans-serif;
+}
 section {
 
     display: grid;
@@ -44,9 +46,7 @@ background-color: #FFF4E1;
     justify-content: center;
     color: #D4696C;
     font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-
-}
+    }
 
 .Formulario {
     display: grid;
@@ -57,7 +57,7 @@ background-color: #FFF4E1;
 .Formulario label {
     color: #D4696C;
     font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
+
     margin-left: 40px;
     font-weight: bold;
     width: 400px;
@@ -80,7 +80,6 @@ input {
 }
 
 a {
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: #038554;
     text-decoration: none;
@@ -96,12 +95,11 @@ a {
 button {
     width:40%;
     padding: 12px 20px;
-border-radius: 8px;
-background-color: #68DDBD;
-border-color: #68DDBD;
-font-size:20px;
-color: #D4696C;
-font-family: Arial, Helvetica, sans-serif;
+    border-radius: 8px;
+    background-color: #68DDBD;
+    border-color: #68DDBD;
+    font-size:20px;
+    color: #D4696C;
     font-weight: bold;
     
 
@@ -218,3 +216,51 @@ font-family: Arial, Helvetica, sans-serif;
  
 
 /*Cierre Seccion Registrate*/
+
+/*Seccion de calificaciones*/
+.logoCal h3 {
+   text-align: center;
+   color: #D4696C;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.logoCal img {
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    margin-top: 3rem;
+    display: grid;
+    align-item: center;
+
+}
+
+.containerTabla{
+    list-style-type: none;
+    background-color: #FFF4E1;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+
+}
+
+.containerTabla h4 {
+    color: #D4696C;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 20px;
+
+
+}
+
+.InfoGrupo{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.TitulosGrupo1 tr {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+/*Seccion de calificaciones*/
