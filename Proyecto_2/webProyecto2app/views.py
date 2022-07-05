@@ -7,9 +7,21 @@ def login(request):
 
 def extraeralumno(request):
     nro_alumnos = Alumno.objects.count()
-    notas = Calificaciones.objects.all()
+    #notas = Calificaciones.objects.all()
     alumno = Alumno.objects.all()
-    return render(request, 'calificaciones.html', {'nro_alumnos': nro_alumnos, 'alumno': alumno, 'par_notas': notas})
+    return render(request, 'Grupo1.html', {'nro_alumnos': nro_alumnos, 'alumno': alumno})
+    #'par_notas': notas
+
+"""def notasalumno(request, id):
+    nro_alumnos = Alumno.objects.count()
+    alumno = Alumno.objects.get(pk=id)
+    notas = Calificaciones.objects.all()
+    return render(request, 'notas.html', {'nro_alumnos': nro_alumnos, 'alumno': alumno, 'notas': notas})"""
+
+def notasalumno(request):
+
+    notas = Calificaciones.objects.all()
+    return render(request, 'notas.html', {'notas': notas})
 
 # Create your views here.
 

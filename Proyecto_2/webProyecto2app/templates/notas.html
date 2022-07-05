@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coders University</title>
+    <!-- carga css  -->
+   <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all" type="text/css">
+    <!--<link rel="stylesheet" href="style.css">-->
+</head>
+
+<body>
+
+    <div class="containerNotas">
+            <article class="logoNotas">
+                <!--carga imagen -->
+                <img src="{% static 'img/logo.png' %}">
+                <h3>Listado de alumnos por grupo</h3>
+            </article>
+    </div>
+            <div class="containerTablaNotas">
+                <h4>Turno: Mañana</h4>
+
+                    <table class="InfoNotas">
+
+            <thead class="TitulosNotas">
+            <tr>
+                <th>Alumno</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Nota Final</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                {% for n in notas %}
+                <td>{{n.id}}</td>
+                <td>{{n.Alumno.nombre}}</td>
+                <td>{{n.Alumno.apellido}}</td>
+                <td>{{n.nota1}}</td>
+                <td>{{n.nota2}}</td>
+                <td>{{n.notaFinal}}</td>
+
+                {% endfor %}
+
+                <td><a href="editar_persona/{{p.id}}">Editar</a></td>
+                <td><a href="eliminar_persona/{{p.id}}">Eliminar</a></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+</body>
+</html>
