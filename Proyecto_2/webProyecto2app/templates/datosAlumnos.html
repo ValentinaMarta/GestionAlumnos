@@ -12,6 +12,10 @@
 </head>
 
 <body>
+    <a href="{% url 'enlaceDatosCalificaciones' %}">
+    <button>Ver Notas</button>
+  </a>
+
 
     <div class="containerCalificaciones">
             <article class="logoCal">
@@ -45,13 +49,14 @@
                 <td>{{x.email}}</td>
 
 
-                <td><a href="notasalumno/{{x.id}}">Ver Notas</a></td>
+                <td><a href="rutaEditarAlumno/{{x.id}}">Editar</a></td>
+                <td><a href="rutaEliminarAlumno/{{x.id}}">Eliminar</a></td>
 
             </tr>
             {% endfor %}
             </tbody>
         </table>
-                <a href="nuevoalumno">Agregar Alumno</a>
+                <a href="{% url 'agregarNuevo' %}">Agregar Alumno</a>
                 <!--acaba el for-->
             </div>
 </body>

@@ -13,23 +13,22 @@
 
 <body>
 
-    <div class="containerNotas">
-            <article class="logoNotas">
+    <div class="containerCalificaciones">
+            <article class="logoCal">
                 <!--carga imagen -->
                 <img src="{% static 'img/logo.png' %}">
-                <h3>Listado de alumnos por grupo</h3>
+                <h3>Grupo 1 - Introducción a la programación</h3>
             </article>
     </div>
-            <div class="containerTablaNotas">
+            <div class="containerTabla">
                 <h4>Turno: Mañana</h4>
 
-                    <table class="InfoNotas">
+                    <table class="InfoGrupo">
 
-            <thead class="TitulosNotas">
+            <thead class="TitulosGrupo1">
             <tr>
-                <th>Alumno</th>
+                <th>Numero</th>
                 <th>Nombre</th>
-                <th>Apellido</th>
                 <th>Nota 1</th>
                 <th>Nota 2</th>
                 <th>Nota Final</th>
@@ -37,24 +36,28 @@
 
             </thead>
             <tbody>
+             {% for x in notas %}
             <tr>
-                {% for n in notas %}
-                <td>{{n.id}}</td>
-                <td>{{n.Alumno.nombre}}</td>
-                <td>{{n.Alumno.apellido}}</td>
-                <td>{{n.nota1}}</td>
-                <td>{{n.nota2}}</td>
-                <td>{{n.notaFinal}}</td>
+                <td>{{x.id}}</td>
+                <td>{{x.Alumno.nombre}}</td>
+                <td>{{x.nota1}}</td>
+                <td>{{x.nota2}}</td>
+                <td>{{x.notaFinal}}</td>
 
 
 
-                <td><a href="notas/{{calif.id}}">Editar</a></td>
-                {% endfor %}
+                <td><a href=" {% url 'enlaceEditarCalificaciones' x.id %}">Editar</a></td>
+                <td><a href="{% url 'enlaceEliminarCalificaciones' x.id %}">Eliminar</a></td>
+
+
+
+
             </tr>
-
+            {% endfor %}
             </tbody>
         </table>
-                <a href="nuevoalumno">Agregar Alumno</a>
+            </div>
 
+<a href="{% url 'enlaceAgregarCalificaciones' %}">Agregar Calificacion</a>
 </body>
 </html>

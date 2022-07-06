@@ -1,40 +1,87 @@
-from django.contrib.auth.decorators import login_required
-from django.forms import modelform_factory
-from django.shortcuts import render, redirect
 
+from django.shortcuts import render, redirect, get_object_or_404
+
+from webProyecto2app.forms import AlumnoForm, CalificacionesForm
 from webProyecto2app.models import *
-from webProyecto2app.forms import AlumnForm
+
 
 
 def login(request):
-    return render(request, 'index.html', {})
+    return render(request, 'index.html')
 
-def extraeralumno(request):
+
+def datosAlumnos(request):
     nro_alumnos = Alumno.objects.count()
-    #notas = Calificaciones.objects.all()
     alumno = Alumno.objects.all()
-    return render(request, 'Grupo1.html', {'nro_alumnos': nro_alumnos, 'alumno': alumno})
-    #'par_notas': notas
+    return render(request, 'datosAlumnos.html', {'nro_alumnos': nro_alumnos, 'alumno': alumno})
+
+def datosCalificaciones(request):
+    notas = Calificaciones.objects.all()
+    return render(request, 'datosCalificaciones.html', { 'notas': notas})
 
 
-def notasalumno(request, id):
-    notas = Calificaciones.objects.objects.all()
-    calif = Calificaciones.objects.get(pk=id)
-    return render(request, 'notas.html', {'notas': notas, 'calif': calif})
-
-
-
-@login_required
-def nuevoalumno(request):
+def agregarAlumno(request):
     if request.method == 'POST':
-        formaAlumno = AlumnForm(request.POST)
+        formaAlumno = AlumnoForm(request.POST)
         if formaAlumno.is_valid():
             formaAlumno.save()
-            return redirect('Grupo1')
+            return redirect('listaDatosAlumnos')
     else:
-        formaAlumno = AlumnForm
+        formaAlumno = AlumnoForm
 
     return render(request, 'nuevoalumno.html', {'formaAlumno': formaAlumno})
+
+
+
+def editarAlumno(request, id):
+    alumno = get_object_or_404(Alumno, pk=id)
+    if request.method == 'POST':
+        formaAlumno = AlumnoForm(request.POST, instance=alumno)
+        if formaAlumno.is_valid():
+            formaAlumno.save()
+            return redirect('listaDatosAlumnos')
+    else:
+        formaAlumno = AlumnoForm(instance=alumno)
+    return render(request, 'editar.html', {'formaAlumno': formaAlumno})
+
+
+def editarCalificaciones(request, id):
+    notas = get_object_or_404(Calificaciones, pk=id)
+    if request.method == 'POST':
+        formaCalifica = CalificacionesForm(request.POST, instance=notas)
+        if formaCalifica.is_valid():
+            formaCalifica.save()
+            return redirect('enlaceDatosCalificaciones')
+    else:
+        formaCalifica = CalificacionesForm(instance=notas)
+    return render(request, 'editarCalificaciones.html', {'formaCalifica': formaCalifica})
+
+
+def eliminarAlumno(request, id):
+    alumno = get_object_or_404(Alumno, pk=id)
+    if alumno:
+        alumno.delete()
+    return redirect('listaDatosAlumnos')
+
+
+def eliminarCalificaciones(request, id):
+    notas = get_object_or_404(Calificaciones, pk=id)
+    if notas:
+        notas.delete()
+    return redirect('enlaceDatosCalificaciones')
+
+
+def agregarCalificaciones(request):
+    if request.method == 'POST':
+        formaCalificaciones = CalificacionesForm(request.POST)
+        if formaCalificaciones.is_valid():
+            formaCalificaciones.save()
+            return redirect('enlaceDatosCalificaciones')
+    else:
+        formaCalificaciones = CalificacionesForm
+
+    return render(request, 'nuevaCalificacion.html', {'formaCalificaciones': formaCalificaciones})
+
 
 
 # Create your views here.
