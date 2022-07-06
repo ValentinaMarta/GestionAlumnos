@@ -46,14 +46,15 @@
                 <td>{{n.nota2}}</td>
                 <td>{{n.notaFinal}}</td>
 
-                {% endfor %}
 
-                <td><a href="editar_persona/{{p.id}}">Editar</a></td>
-                <td><a href="eliminar_persona/{{p.id}}">Eliminar</a></td>
+
+                <td><a href="notas/{{calif.id}}">Editar</a></td>
+                {% endfor %}
             </tr>
 
             </tbody>
         </table>
+                <a href="nuevoalumno">Agregar Alumno</a>
 
 </body>
 </html>

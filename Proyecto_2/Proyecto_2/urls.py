@@ -21,8 +21,8 @@ from webProyecto2app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', extraeralumno),
-    path('', login),
-    path('notasalumno', notasalumno)
-
+    path('extraeralumno', extraeralumno, name='Grupo1'),
+    path('', login, name='inicio'),
+    path('notasalumno', notasalumno, name='notas'),
+    path('nuevoalumno', nuevoalumno),
 ]

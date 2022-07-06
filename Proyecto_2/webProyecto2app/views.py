@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.forms import modelform_factory
+from django.shortcuts import render, redirect
 
 from webProyecto2app.models import *
+from webProyecto2app.forms import AlumnForm
+
 
 def login(request):
     return render(request, 'index.html', {})
@@ -12,16 +16,26 @@ def extraeralumno(request):
     return render(request, 'Grupo1.html', {'nro_alumnos': nro_alumnos, 'alumno': alumno})
     #'par_notas': notas
 
-"""def notasalumno(request, id):
-    nro_alumnos = Alumno.objects.count()
-    alumno = Alumno.objects.get(pk=id)
-    notas = Calificaciones.objects.all()
-    return render(request, 'notas.html', {'nro_alumnos': nro_alumnos, 'alumno': alumno, 'notas': notas})"""
 
-def notasalumno(request):
+def notasalumno(request, id):
+    notas = Calificaciones.objects.objects.all()
+    calif = Calificaciones.objects.get(pk=id)
+    return render(request, 'notas.html', {'notas': notas, 'calif': calif})
 
-    notas = Calificaciones.objects.all()
-    return render(request, 'notas.html', {'notas': notas})
+
+
+@login_required
+def nuevoalumno(request):
+    if request.method == 'POST':
+        formaAlumno = AlumnForm(request.POST)
+        if formaAlumno.is_valid():
+            formaAlumno.save()
+            return redirect('Grupo1')
+    else:
+        formaAlumno = AlumnForm
+
+    return render(request, 'nuevoalumno.html', {'formaAlumno': formaAlumno})
+
 
 # Create your views here.
 
