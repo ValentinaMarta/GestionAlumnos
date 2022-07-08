@@ -152,7 +152,7 @@
         width: 750px;
      }
 
-     form {
+     .Formulario {
         display:flex;
         flex-direction: column;
         align-content: center;
@@ -161,7 +161,6 @@
         height: 890px;
 
      }
-
 
      .FormularioRegistro{
         display: grid;
@@ -263,4 +262,9 @@
         margin-right: 10px;
         margin-left: 10px;
     }
-    /*Seccion de calificaciones*/
+    /*login*/
+    button{
+ margin-top: 3rem;
+    }
+
+    /*botones ver notas y agregar alumno*/

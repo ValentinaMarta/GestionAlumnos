@@ -1,15 +1,25 @@
-
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.forms import modelform_factory
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
+
+# Create your views here.
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
 
 from webProyecto2app.forms import AlumnoForm, CalificacionesForm
 from webProyecto2app.models import *
 
 
 
-def login(request):
-    return render(request, 'index.html')
 
 
+@login_required
 def datosAlumnos(request):
     nro_alumnos = Alumno.objects.count()
     alumno = Alumno.objects.all()
@@ -83,6 +93,20 @@ def agregarCalificaciones(request):
     return render(request, 'nuevaCalificacion.html', {'formaCalificaciones': formaCalificaciones})
 
 
+def salir(request):
+    logout(request)
+    return redirect('/')
 
 # Create your views here.
 
+def registro(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return redirect('/') #para que te lleve directamente a la vista seria la otra ruta ----listaDatosAlumnos
+    else:
+        form = UserCreationForm()
+    context = {'form': form}
+    return render(request,'registration/registro.html',context)

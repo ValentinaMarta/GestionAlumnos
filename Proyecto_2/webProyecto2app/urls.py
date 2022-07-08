@@ -4,7 +4,7 @@ from webProyecto2app.views import *
 from django.contrib import admin
 
 urlpatterns = [
-   # path('', login, name='inicio'),
+    #path('', login, name='login'),
     path('', datosAlumnos, name='listaDatosAlumnos'), #rutaDatosAlumnos/
     path('rutaAregarAlumno/', agregarAlumno, name='agregarNuevo'),
     path('rutaEditarAlumno/<int:id>', editarAlumno, name='editarAlumno'),
@@ -13,6 +13,8 @@ urlpatterns = [
     path('rutaEditarCalificaciones/<int:id>', editarCalificaciones, name='enlaceEditarCalificaciones'),
     path('rutaEliminarCalificaciones/<int:id>', eliminarCalificaciones, name='enlaceEliminarCalificaciones'),
     path('rutaAgregarCalificaciones/', agregarCalificaciones, name='enlaceAgregarCalificaciones'),
+    path('rutaRegistro/', registro, name='enlaceRegistro'),
+    path('rutaSalir/', salir, name='enlaceSalir'),
 ]
 
 
